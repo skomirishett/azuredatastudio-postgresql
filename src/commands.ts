@@ -72,6 +72,9 @@ async function buildCurrentProject(args, commandObserver: CommandObserver, cance
 		}
 	} else {
 		project = args.fsPath;
+		if(!project) {
+			project = args.element.project._projectFilePath;
+		}
 	}
 
 	await projectHelper.buildProjects([project], commandObserver, cancelToken);
@@ -86,6 +89,9 @@ async function deployCurrentProject(args, commandObserver: CommandObserver, clie
 		}
 	} else {
 		project = args.fsPath;
+		if(!project) {
+			project = args.element.project._projectFilePath;
+		}
 	}
 
 	try {

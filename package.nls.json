@@ -1,4 +1,42 @@
 {
+	"title.projectsView": "Projects",
+
+	"pgsqlDatabaseProjects.displayName": "PG Database Projects",
+	"pgsqlDatabaseProjects.description": "Design and publish database schemas",
+	"pgsqlDatabaseProjects.new": "New Database Project",
+	"pgsqlDatabaseProjects.open": "Open Database Project",
+	"pgsqlDatabaseProjects.close": "Close Database Project",
+	"pgsqlDatabaseProjects.build": "Build",
+	"pgsqlDatabaseProjects.publish": "Publish",
+	"pgsqlDatabaseProjects.createProjectFromDatabase": "Create Project From Database",
+	"pgsqlDatabaseProjects.properties": "Properties",
+	"pgsqlDatabaseProjects.schemaCompare": "Schema Compare",
+	"pgsqlDatabaseProjects.delete": "Delete",
+	"pgsqlDatabaseProjects.exclude": "Exclude from project",
+	"pgsqlDatabaseProjects.validateExternalStreamingJob": "Validate External Streaming Job",
+
+	"pgsqlDatabaseProjects.newScript": "Add Script",
+	"pgsqlDatabaseProjects.newPreDeploymentScript": "Add Pre-Deployment Script",
+	"pgsqlDatabaseProjects.newPostDeploymentScript": "Add Post-Deployment Script",
+	"pgsqlDatabaseProjects.newTable": "Add Table",
+	"pgsqlDatabaseProjects.newView": "Add View",
+	"pgsqlDatabaseProjects.newStoredProcedure": "Add Stored Procedure",
+	"pgsqlDatabaseProjects.newExternalStreamingJob": "Add External Streaming Job",
+	"pgsqlDatabaseProjects.newItem": "Add Item...",
+	"pgsqlDatabaseProjects.newFolder": "Add Folder",
+
+
+	"pgsqlDatabaseProjects.addDatabaseReference": "Add Database Reference",
+	"pgsqlDatabaseProjects.openContainingFolder": "Open Containing Folder",
+	"pgsqlDatabaseProjects.editProjectFile": "Edit .pgproj File",
+	"pgsqlDatabaseProjects.changeTargetPlatform": "Change Target Platform",
+
+	"pgsqlDatabaseProjects.Settings": "Database Projects",
+	"pgsqlDatabaseProjects.netCoreInstallLocation": "Full path to .NET Core SDK on the machine.",
+	"pgsqlDatabaseProjects.netCoreDoNotAsk": "Whether to prompt the user to install .NET Core when not detected.",
+	"pgsqlDatabaseProjects.welcome": "No database projects currently open.\n[New Project](command:pgsqlDatabaseProjects.new)\n[Open Project](command:pgsqlDatabaseProjects.open)\n[Create Project From Database](command:pgsqlDatabaseProjects.importDatabase)",
+
+
 	"json.schemas.desc": "Associate schemas to JSON files in the current project",
 	"json.schemas.url.desc": "A URL to a schema or a relative path to a schema in the current directory",
 	"json.schemas.fileMatch.desc": "An array of file patterns to match against when resolving JSON files to schemas.",

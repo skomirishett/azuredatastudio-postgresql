@@ -1,7 +1,7 @@
 {
   "name": "azuredatastudio-postgresql",
   "displayName": "PostgreSQL",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "publisher": "Microsoft",
   "description": "PostgreSQL extension for Azure Data Studio",
   "aiKey": "c2c974c2-f342-42c8-b85b-b79436a86603",
@@ -28,6 +28,9 @@
     "postinstall": "node ./node_modules/vscode/bin/install && node ./node_modules/azdata/bin/install"
   },
   "contributes": {
+    "projects": [
+      "pgproj"
+    ],
     "grammars": [
       {
         "injectTo": [ "source.sql" ],
@@ -374,6 +377,76 @@
         "command": "pgproj.deploy.current",
         "title": "Deploy",
         "category": "PostgreSQLProject"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newScript",
+        "title": "%pgsqlDatabaseProjects.newScript%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newPreDeploymentScript",
+        "title": "%pgsqlDatabaseProjects.newPreDeploymentScript%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newPostDeploymentScript",
+        "title": "%pgsqlDatabaseProjects.newPostDeploymentScript%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newTable",
+        "title": "%pgsqlDatabaseProjects.newTable%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newView",
+        "title": "%pgsqlDatabaseProjects.newView%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newStoredProcedure",
+        "title": "%pgsqlDatabaseProjects.newStoredProcedure%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newItem",
+        "title": "%pgsqlDatabaseProjects.newItem%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.newFolder",
+        "title": "%pgsqlDatabaseProjects.newFolder%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.delete",
+        "title": "%pgsqlDatabaseProjects.delete%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.exclude",
+        "title": "%pgsqlDatabaseProjects.exclude%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.properties",
+        "title": "%pgsqlDatabaseProjects.properties%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.addDatabaseReference",
+        "title": "%pgsqlDatabaseProjects.addDatabaseReference%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.openContainingFolder",
+        "title": "%pgsqlDatabaseProjects.openContainingFolder%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
+      },
+      {
+        "command": "pgsqlDatabaseProjects.editProjectFile",
+        "title": "%pgsqlDatabaseProjects.editProjectFile%",
+        "category": "%pgsqlDatabaseProjects.displayName%"
       }
     ],
     "menus": {
@@ -389,6 +462,62 @@
         {
           "command": "pgproj.add.new",
           "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newScript",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newPreDeploymentScript",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newPostDeploymentScript",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newTable",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newView",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newStoredProcedure",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newItem",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newFolder",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.delete",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.properties",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.addDatabaseReference",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.openContainingFolder",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.editProjectFile",
+          "when": "false"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.exclude",
+          "when": "false"
         }
       ],
       "explorer/context": [
@@ -403,6 +532,83 @@
         {
           "command": "pgproj.add.new",
           "when": "explorerResourceIsFolder"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "pgproj.build.current",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project",
+          "group": "1_dbProjectsFirst@1"
+        },
+        {
+          "command": "pgproj.deploy.current",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project",
+          "group": "1_dbProjectsFirst@1"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newItem",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "2_dbProjects_newMain@1"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newFolder",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "2_dbProjects_newMain@2"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newTable",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@1"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newView",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@2"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newStoredProcedure",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@3"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newScript",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@7"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newPreDeploymentScript",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@8"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.newPostDeploymentScript",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project || viewItem == pgDatabaseProject.itemType.folder",
+          "group": "3_dbProjects_newItem@9"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.addDatabaseReference",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.referencesRoot",
+          "group": "4_dbProjects_addDatabaseReference"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.exclude",
+          "when": "view =~ /^(pgsqlDatabaseProjectsView|dataworkspace.views.main)$/ && viewItem == pgDatabaseProject.itemType.folder || viewItem =~ /^pgDatabaseProject.itemType.file/",
+          "group": "9_dbProjectsLast@1"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.delete",
+          "when": "view =~ /^(pgsqlDatabaseProjectsView|dataworkspace.views.main)$/ && viewItem == pgDatabaseProject.itemType.folder || viewItem =~ /^pgDatabaseProject.itemType.file/ || viewItem == pgDatabaseProject.itemType.reference",
+          "group": "9_dbProjectsLast@2"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.editProjectFile",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project",
+          "group": "9_dbProjectsLast@7"
+        },
+        {
+          "command": "pgsqlDatabaseProjects.openContainingFolder",
+          "when": "view == dataworkspace.views.main && viewItem == pgDatabaseProject.itemType.project",
+          "group": "9_dbProjectsLast@8"
         }
       ],
       "editor/context": [
@@ -442,10 +648,34 @@
     "which": "^1.3.1",
     "compare-versions": "^3.5.1",
     "xml2js": "^0.4.22",
-		"vscode-nls": "^4.1.1"
+		"vscode-nls": "^4.1.1",
+
+    "@microsoft/ads-extension-telemetry": "^1.1.3",
+    "@types/xml-formatter": "^1.1.0",
+    "D": "^1.0.0",
+    "fast-glob": "^3.1.0",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "promisify-child-process": "^3.1.1",
+    "xml-formatter": "^2.1.0",
+    "xmldom": "^0.3.0",
+    "@microsoft/ads-kerberos": "^1.1.3",
+    "buffer-stream-reader": "^0.1.1",
+    "bytes": "^3.1.0",
+    "error-ex": "^1.3.2",
+    "figures": "^2.0.0",
+    "find-remove": "1.2.1",
+    "request": "^2.88.0",
+    "request-light": "^0.3.0",
+    "stream-meter": "^1.0.4",
+    "through2": "^3.0.1",
+    "tough-cookie": "^3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^8.0.53",
+    "@types/azdata": "^1.26.0",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^12.20.5",
+    "@types/vscode": "^1.53.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
     "decache": "^4.1.0",
@@ -479,21 +709,31 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-junit-reporter": "^1.1.0",
     "karma-remap-istanbul": "^0.2.1",
-    "mocha": "4.1.0",
     "pm-mocha-jenkins-reporter": "^0.2.6",
     "remap-istanbul": "^0.6.4",
     "request": "2.85.0",
     "source-map-support": "0.5.4",
     "systemjs-builder": "^0.15.32",
-    "tslint": "^3.14.0",
-    "typemoq": "^1.7.0",
-    "typescript": "^2.8.1",
     "uglify-js": "mishoo/UglifyJS2#harmony-v2.8.22",
     "url-parse": "1.2.0",
     "vscode": "1.0.1",
     "xmldom": "^0.1.27",
     "yargs": "https://registry.npmjs.org/yargs/-/yargs-3.32.0.tgz",
-		"vscode-nls-dev": "^3.3.1"
+		"vscode-nls-dev": "^3.3.1",
+
+    "mocha": "^8.3.2",
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.3.2",
+    "vsce": "^1.87.0",
+    "@types/sinon": "^9.0.4",
+    "@types/xmldom": "^0.1.29",
+    "mocha-junit-reporter": "^1.17.0",
+    "mocha-multi-reporters": "^1.1.7",
+    "should": "^13.2.1",
+    "sinon": "^9.0.2",
+    "tslint": "^5.8.0",
+    "typemoq": "^2.1.0",
+    "vscodetestcover": "^1.1.0"
   },
   "resolutions": {
     "vscode-jsonrpc": "3.5.0",

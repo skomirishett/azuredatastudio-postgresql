@@ -11,6 +11,7 @@ import { IConfig, ServerProvider, Events } from 'service-downloader';
 import { ServerOptions, TransportKind } from 'vscode-languageclient';
 import * as nls from 'vscode-nls';
 
+
 // this should precede local imports because they can trigger localization calls
 const localize = nls.config({ messageFormat: nls.MessageFormat.file })();
 
@@ -26,8 +27,12 @@ import { NotificationType } from 'vscode-languageclient';
 const baseConfig = require('./config.json');
 const outputChannel = vscode.window.createOutputChannel(Constants.serviceName);
 const statusView = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+let controllers: MainController[] = [];
 
-export async function activate(context: vscode.ExtensionContext) {
+import MainController from './controllers/mainController';
+import { PGSqlDatabaseProjectProvider } from './projectProvider/projectProvider';
+
+export async function activate(context: vscode.ExtensionContext) : Promise<PGSqlDatabaseProjectProvider> {
 	// lets make sure we support this platform first
 	let supported = await Utils.verifyPlatform();
 
@@ -107,6 +112,13 @@ export async function activate(context: vscode.ExtensionContext) {
 	}
 
 	context.subscriptions.push({ dispose: () => languageClient.stop() });
+
+	const mainController = new MainController(context);
+	controllers.push(mainController);
+	context.subscriptions.push(mainController);
+
+	return mainController.activate();
+
 }
 
 function addDeployNotificationsHandler(client: SqlOpsDataClient, commandObserver: CommandObserver) {
