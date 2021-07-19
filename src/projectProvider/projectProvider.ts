@@ -5,7 +5,7 @@
 
 import { ThemedIconPath } from 'azdata';
 import * as dataworkspace from 'dataworkspace';
-import * as sqldbproj from 'pgdbproj';
+import * as pgdbproj from 'pgdbproj';
 import * as vscode from 'vscode';
 import * as constants from '../common/constants';
 import { IconPathHelper } from '../common/iconHelper';
@@ -14,11 +14,11 @@ import { ProjectsController } from '../controllers/projectController';
 import { Project } from '../models/project';
 import { BaseProjectTreeItem } from '../models/tree/baseTreeItem';
 
-export class PGSqlDatabaseProjectProvider implements dataworkspace.IProjectProvider, sqldbproj.IExtension {
+export class PGSqlDatabaseProjectProvider implements dataworkspace.IProjectProvider, pgdbproj.IExtension {
 	constructor(private projectController: ProjectsController) {
 
 	}
-	openProject(projectFilePath: string): Promise<sqldbproj.ISqlProject> {
+	openProject(projectFilePath: string): Promise<pgdbproj.ISqlProject> {
 		throw new Error('openProject Method not implemented.');
 	}
 	async getProjectTreeDataProvider(projectFilePath: vscode.Uri): Promise<vscode.TreeDataProvider<any>> {
