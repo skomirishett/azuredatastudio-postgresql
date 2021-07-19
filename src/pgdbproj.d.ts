@@ -3,10 +3,10 @@
  *  Licensed under the Source EULA. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-declare module 'sqldbproj' {
+declare module 'pgdbproj' {
 	import * as vscode from 'vscode';
 	export const enum extension {
-		name = 'Microsoft.sql-database-projects'
+		name = 'Microsoft.pg-database-projects'
 	}
 
 	/**

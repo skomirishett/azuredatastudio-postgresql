@@ -5,7 +5,7 @@
 
 import { ThemedIconPath } from 'azdata';
 import * as dataworkspace from 'dataworkspace';
-import * as sqldbproj from 'sqldbproj';
+import * as sqldbproj from 'pgdbproj';
 import * as vscode from 'vscode';
 import * as constants from '../common/constants';
 import { IconPathHelper } from '../common/iconHelper';
