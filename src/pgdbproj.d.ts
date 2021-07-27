@@ -6,7 +6,7 @@
 declare module 'pgdbproj' {
 	import * as vscode from 'vscode';
 	export const enum extension {
-		name = 'Microsoft.pg-database-projects'
+		name = 'Microsoft.azuredatastudio-postgresql'
 	}
 
 	/**
@@ -23,7 +23,7 @@ declare module 'pgdbproj' {
 		createProject(name: string, location: vscode.Uri, projectTypeId: string): Promise<vscode.Uri>;
 
 		/**
-		 * Opens and loads a .sqlproj file
+		 * Opens and loads a .pgproj file
 		 */
 		openProject(projectFilePath: string): Promise<ISqlProject>;
 	}

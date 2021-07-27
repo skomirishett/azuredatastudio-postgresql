@@ -11,7 +11,7 @@ import * as os from 'os';
 import * as templates from '../templates/templates';
 
 import { Uri, window } from 'vscode';
-import { IFileProjectEntry, ISqlProject } from 'sqldbproj';
+import { IFileProjectEntry, ISqlProject } from 'pgdbproj';
 import { promises as fs } from 'fs';
 import { DataSource } from './dataSources/dataSources';
 import { ISystemDatabaseReferenceSettings, IDacpacReferenceSettings, IProjectReferenceSettings } from './IDatabaseReferenceSettings';
@@ -89,11 +89,11 @@ export class Project implements ISqlProject {
 
 	constructor(projectFilePath: string) {
 		this._projectFilePath = projectFilePath;
-		this._projectFileName = path.basename(projectFilePath, '.sqlproj');
+		this._projectFileName = path.basename(projectFilePath, '.pgproj');
 	}
 
 	/**
-	 * Open and load a .sqlproj file
+	 * Open and load a .pgproj file
 	 */
 	public static async openProject(projectFilePath: string): Promise<Project> {
 		const proj = new Project(projectFilePath);

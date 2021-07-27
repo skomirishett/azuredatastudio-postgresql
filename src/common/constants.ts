@@ -22,7 +22,7 @@ export const MicrosoftDatatoolsSchemaSqlSql = 'Microsoft.Data.Tools.Schema.Sql.S
 export const databaseSchemaProvider = 'DatabaseSchemaProvider';
 
 // Project Provider
-export const emptyPGSqlDatabaseProjectTypeId = 'EmptyPGSqlDbProj';
+export const emptyPGSqlDatabaseProjectTypeId = 'EmptyPgDbProj';
 export const emptyProjectTypeDisplayName = localize('emptyProjectTypeDisplayName', "Postgre SQL Database");
 export const emptyProjectTypeDescription = localize('emptyProjectTypeDescription', "Develop and publish schemas for Postgre SQL databases starting from an empty project");
 
