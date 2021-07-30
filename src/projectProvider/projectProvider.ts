@@ -19,7 +19,7 @@ export class PGSqlDatabaseProjectProvider implements dataworkspace.IProjectProvi
 
 	}
 	openProject(projectFilePath: string): Promise<pgdbproj.ISqlProject> {
-		throw new Error('openProject Method not implemented.');
+		return Project.openProject(projectFilePath);
 	}
 	async getProjectTreeDataProvider(projectFilePath: vscode.Uri): Promise<vscode.TreeDataProvider<any>> {
 		const provider = new SqlDatabaseProjectTreeViewProvider();
